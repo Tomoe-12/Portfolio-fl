@@ -1,32 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ExternalLink,
-  Download,
-  Menu,
-  X,
-  Sun,
-  Moon,
-  ChevronDown,
-} from "lucide-react";
-import Image from "next/image";
-
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import Nav from "@/components/nav";
 import Hero from "@/components/Sections/hero";
 import About from "@/components/Sections/about";
+import Projects from "@/components/Sections/projects";
+import Certificates from "@/components/Sections/certificates";
+import Contact from "@/components/Sections/contact";
+import Footer from "@/components/footer";
 
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -481,321 +462,26 @@ export default function Portfolio() {
       />
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-7xl mx-auto">
-          <div
-            className={`text-center mb-20 transition-all duration-1000 ${
-              visibleSections.has("projects")
-                ? "animate-fade-in-up"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              {currentLanguage === "en"
-                ? "Featured Projects"
-                : "အဓိက ပရောဂျက်များ"}
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              {currentLanguage === "en"
-                ? "Here are some of my recent projects that showcase my skills and experience."
-                : "ကျွန်တော့်ရဲ့ ကျွမ်းကျင်မှုနှင့် အတွေ့အကြုံများကို ပြသသော မကြာသေးမီက ပရောဂျက်များဖြစ်ပါသည်။"}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {projects.map((project, index) => (
-              <Card
-                key={index}
-                className={`overflow-hidden hover-lift transition-all duration-1000 group ${
-                  visibleSections.has("projects")
-                    ? "animate-scale-in"
-                    : "opacity-0 scale-90"
-                }`}
-                style={{ animationDelay: `${0.2 + index * 0.2}s` }}
-              >
-                <div className="aspect-video relative overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="flex gap-4">
-                      <Button
-                        variant="secondary"
-                        size="icon"
-                        asChild
-                        className="hover-scale"
-                      >
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="h-5 w-5" />
-                        </a>
-                      </Button>
-                      <Button
-                        variant="secondary"
-                        size="icon"
-                        asChild
-                        className="hover-scale"
-                      >
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="h-5 w-5" />
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => (
-                      <Badge
-                        key={tech}
-                        variant="outline"
-                        className="text-xs hover-scale transition-all duration-300 rounded-full"
-                        style={{ transitionDelay: `${techIndex * 0.05}s` }}
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* See More Projects Button */}
-          <div
-            className={`text-center mt-16 transition-all duration-1000 delay-500 ${
-              visibleSections.has("projects")
-                ? "animate-fade-in-up"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
-            <p className="text-muted-foreground mb-6 text-lg">
-              {currentLanguage === "en"
-                ? "Want to see more of my work? Check out my complete portfolio."
-                : "ကျွန်တော့်အလုပ်များကို ပိုမိုကြည့်ရှုလိုပါသလား? ကျွန်တော့်ရဲ့ အပြည့်အစုံ portfolio ကို ကြည့်ရှုပါ။"}
-            </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="hover-lift rounded-full"
-            >
-              <ExternalLink className="mr-3 h-5 w-5" />
-              {currentLanguage === "en"
-                ? "See More Projects"
-                : "ပရောဂျက်များ ပိုမိုကြည့်ရန်"}
-            </Button>
-          </div>
-        </div>
-      </section>
+      <Projects
+        projects={projects}
+        visibleSections={visibleSections}
+        currentLanguage={currentLanguage}
+      />
 
       {/* Certificates Section */}
-      <section
-        id="certificates"
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div
-            className={`text-center mb-20 transition-all duration-1000 ${
-              visibleSections.has("certificates")
-                ? "animate-fade-in-up"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              {currentLanguage === "en" ? "Certifications" : "လက်မှတ်များ"}
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              {currentLanguage === "en"
-                ? "Professional certifications that validate my expertise and commitment to continuous learning."
-                : "ကျွန်တော့်ရဲ့ ကျွမ်းကျင်မှုနှင့် စဉ်ဆက်မပြတ် သင်ယူမှုအပေါ် ကတိကဝတ်ကို အတည်ပြုသော ပရော်ဖက်ရှင်နယ် လက်မှတ်များဖြစ်ပါသည်။"}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-10">
-            {certificates.map((cert, index) => (
-              <Card
-                key={index}
-                className={`overflow-hidden hover-lift transition-all duration-1000 group ${
-                  visibleSections.has("certificates")
-                    ? "animate-scale-in"
-                    : "opacity-0 scale-90"
-                }`}
-                style={{ animationDelay: `${0.2 + index * 0.15}s` }}
-              >
-                <CardHeader className="pb-4">
-                  <div className="flex items-start gap-6">
-                    <div className="relative">
-                      <Image
-                        src={cert.image || "/placeholder.svg"}
-                        alt={`${cert.issuer} logo`}
-                        width={100}
-                        height={100}
-                        className="rounded-xl border-2 border-primary/20 hover-scale transition-transform duration-300"
-                      />
-                      <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-primary/20 to-secondary/20 animate-pulse-slow -z-10"></div>
-                    </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-xl mb-3 flex items-center justify-between group-hover:text-primary transition-colors duration-300">
-                        <span>{cert.title}</span>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          asChild
-                          className="hover-scale"
-                        >
-                          <a
-                            href={cert.verifyUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink className="h-5 w-5" />
-                          </a>
-                        </Button>
-                      </CardTitle>
-                      <div className="space-y-2 text-sm text-muted-foreground">
-                        <p className="font-medium text-base">{cert.issuer}</p>
-                        <p>
-                          {currentLanguage === "en"
-                            ? "Issued:"
-                            : "ထုတ်ပေးသည့်ခုနှစ်:"}{" "}
-                          {cert.date}
-                        </p>
-                        <p className="font-mono text-xs bg-muted px-2 py-1 rounded">
-                          ID: {cert.credentialId}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {cert.skills.map((skill, skillIndex) => (
-                      <Badge
-                        key={skill}
-                        variant="secondary"
-                        className="text-xs hover-scale transition-all duration-300 rounded-full"
-                        style={{ transitionDelay: `${skillIndex * 0.05}s` }}
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Additional Certifications Note */}
-          <div
-            className={`text-center mt-16 transition-all duration-1000 delay-500 ${
-              visibleSections.has("certificates")
-                ? "animate-fade-in-up"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
-            <p className="text-muted-foreground mb-6 text-lg">
-              {currentLanguage === "en"
-                ? "Continuously expanding my knowledge through professional development"
-                : "ပရော်ဖက်ရှင်နယ် ဖွံ့ဖြိုးတိုးတက်မှုများမှတစ်ဆင့် ကျွန်တော့်အသိပညာကို စဉ်ဆက်မပြတ် တိုးချဲ့နေပါသည်"}
-            </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="hover-lift rounded-full"
-            >
-              {currentLanguage === "en"
-                ? "View All Certifications"
-                : "လက်မှတ်အားလုံးကြည့်ရန်"}
-            </Button>
-          </div>
-        </div>
-      </section>
-
+      <Certificates
+        certificates={certificates}
+        visibleSections={visibleSections}
+        currentLanguage={currentLanguage}
+      />
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div
-          className={`max-w-7xl mx-auto text-center transition-all duration-1000 ${
-            visibleSections.has("contact")
-              ? "animate-fade-in-up"
-              : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            {currentLanguage === "en"
-              ? "Let's Work Together"
-              : "အတူတကွ လုပ်ကိုင်ကြရအောင်"}
-          </h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
-            {currentLanguage === "en"
-              ? "I'm always interested in new opportunities and exciting projects. Let's connect and discuss how we can bring your ideas to life."
-              : "ကျွန်တော်သည် အခွင့်အလမ်းအသစ်များနှင့် စိတ်လှုပ်ရှားဖွယ် ပရောဂျက်များကို အမြဲတမ်း စိတ်ဝင်စားပါသည်။ ဆက်သွယ်ပြီး သင့်အိုင်ဒီယာများကို အသက်ဝင်စေရန် မည်သို့လုပ်ဆောင်နိုင်မည်ကို ဆွေးနွေးကြရအောင်။"}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-            {[
-              {
-                icon: Mail,
-                text: currentLanguage === "en" ? "Email Me" : "အီးမေးလ်ပို့ရန်",
-                href: "mailto:john@example.com",
-              },
-              {
-                icon: Linkedin,
-                text: "LinkedIn",
-                href: "https://linkedin.com",
-              },
-              { icon: Github, text: "GitHub", href: "https://github.com" },
-            ].map((item, index) => (
-              <Button
-                key={item.text}
-                size="lg"
-                variant={index === 0 ? "default" : "outline"}
-                asChild
-                className={`hover-lift transition-all duration-1000 text-lg px-8 py-6 rounded-full ${
-                  visibleSections.has("contact")
-                    ? "animate-fade-in-up"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{ animationDelay: `${0.2 + index * 0.1}s` }}
-              >
-                <a
-                  href={item.href}
-                  target={index > 0 ? "_blank" : undefined}
-                  rel={index > 0 ? "noopener noreferrer" : undefined}
-                >
-                  <item.icon className="mr-3 h-6 w-6" />
-                  {item.text}
-                </a>
-              </Button>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Contact
+        visibleSections={visibleSections}
+        currentLanguage={currentLanguage}
+      />
 
       {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border/20 bg-muted/20">
-        <div className="max-w-7xl mx-auto text-center text-muted-foreground animate-fade-in-up">
-          <p className="text-lg">&copy; 2024 John Doe. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 }
