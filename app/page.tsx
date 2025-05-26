@@ -128,74 +128,6 @@ export default function Portfolio() {
     };
   }, [mounted]);
 
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      description:
-        "A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.",
-      tech: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
-      github: "#",
-      demo: "#",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Task Management App",
-      description:
-        "A collaborative task management application with real-time updates and team collaboration features.",
-      tech: ["React", "Node.js", "Socket.io", "PostgreSQL"],
-      github: "#",
-      demo: "#",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      title: "Weather Dashboard",
-      description:
-        "A responsive weather dashboard with location-based forecasts and interactive charts.",
-      tech: ["React", "Chart.js", "Weather API", "Tailwind CSS"],
-      github: "#",
-      demo: "#",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-  ];
-
-  const certificates = [
-    {
-      title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      date: "2024",
-      credentialId: "AWS-SAA-123456",
-      image: "/placeholder.svg?height=100&width=100",
-      verifyUrl: "#",
-      skills: ["AWS", "Cloud Architecture", "EC2", "S3"],
-    },
-    {
-      title: "Google Cloud Professional Developer",
-      issuer: "Google Cloud",
-      date: "2023",
-      credentialId: "GCP-PD-789012",
-      image: "/placeholder.svg?height=100&width=100",
-      verifyUrl: "#",
-      skills: ["GCP", "Kubernetes", "Cloud Functions", "BigQuery"],
-    },
-    {
-      title: "Meta React Developer Certificate",
-      issuer: "Meta",
-      date: "2023",
-      credentialId: "META-RD-345678",
-      image: "/placeholder.svg?height=100&width=100",
-      verifyUrl: "#",
-      skills: ["React", "JavaScript", "Frontend", "UI/UX"],
-    },
-    {
-      title: "MongoDB Certified Developer",
-      issuer: "MongoDB University",
-      date: "2022",
-      credentialId: "MDB-DEV-901234",
-      image: "/placeholder.svg?height=100&width=100",
-      verifyUrl: "#",
-      skills: ["MongoDB", "NoSQL", "Database Design", "Aggregation"],
-    },
-  ];
 
   // Don't render until mounted to prevent hydration mismatch
   if (!mounted) {
@@ -463,14 +395,12 @@ export default function Portfolio() {
 
       {/* Projects Section */}
       <Projects
-        projects={projects}
         visibleSections={visibleSections}
         currentLanguage={currentLanguage}
       />
 
       {/* Certificates Section */}
       <Certificates
-        certificates={certificates}
         visibleSections={visibleSections}
         currentLanguage={currentLanguage}
       />

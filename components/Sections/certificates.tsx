@@ -5,25 +5,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import Image from 'next/image'
 import { ExternalLink } from 'lucide-react'
 import { Badge } from '../ui/badge'
+import certificates from '@/data/certificates'
 
-interface Certificate {
-  image?: string;
-  issuer: string;
-  title: string;
-  verifyUrl: string;
-  date: string;
-  credentialId: string;
-  skills: string[];
-}
 
 interface CertificatesProps {
-  certificates: Certificate[];
   visibleSections: Set<string>;
   currentLanguage: string;
 }
 
 const Certificates = ({
-    certificates,
     visibleSections,
     currentLanguage,
 }: CertificatesProps) => {

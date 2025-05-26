@@ -5,24 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { Button } from '../ui/button'
 import { ExternalLink, Github } from 'lucide-react'
 import { Badge } from '../ui/badge'
-
-type Project = {
-  image?: string;
-  title: string;
-  description: string;
-  github?: string;
-  demo?: string;
-  tech: string[];
-};
+import projects from '@/data/projects'
 
 type ProjectsProps = {
-  projects: Project[];
   visibleSections: Set<string>;
   currentLanguage: string;
 };
 
 const Projects: React.FC<ProjectsProps> = ({
-    projects,
     visibleSections,
     currentLanguage,
 }) => {
