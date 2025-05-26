@@ -1,128 +1,151 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { Github, Linkedin, Mail, ExternalLink, Download, Menu, X, Sun, Moon, ChevronDown } from "lucide-react"
-import Image from "next/image"
+import { useState, useEffect, useRef } from "react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Download,
+  Menu,
+  X,
+  Sun,
+  Moon,
+  ChevronDown,
+} from "lucide-react";
+import Image from "next/image";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import Nav from "@/components/nav"
-import Hero from "@/components/Sections/hero"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Nav from "@/components/nav";
+import Hero from "@/components/Sections/hero";
+import About from "@/components/Sections/about";
 
 export default function Portfolio() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [typedText, setTypedText] = useState("")
-  const [isTyping, setIsTyping] = useState(true)
-  const [visibleSections, setVisibleSections] = useState(new Set())
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const [currentLanguage, setCurrentLanguage] = useState("en")
-  const [scrollY, setScrollY] = useState(0)
-  const [activeSection, setActiveSection] = useState("home")
-  const [mounted, setMounted] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [typedText, setTypedText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(
+    new Set()
+  );
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState("en");
+  const [scrollY, setScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState("home");
+  const [mounted, setMounted] = useState(false);
 
-  const fullText = "Khun Thi Han"
-  const observerRef = useRef<IntersectionObserver | null>(null)
+  const fullText = "Khun Thi Han";
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Handle hydration
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   // Scroll tracking
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted) return;
 
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [mounted])
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mounted]);
 
   // Active section tracking
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted) return;
 
     const handleScroll = () => {
-      const sections = ["home", "about", "projects", "certificates", "contact"]
-      const scrollPosition = window.scrollY + 100
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
+      const sections = ["home", "about", "projects", "certificates", "contact"];
+      const scrollPosition = window.scrollY + 100;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
 
       // Check if we're near the bottom of the page (within 100px)
       if (scrollPosition + windowHeight >= documentHeight - 100) {
-        setActiveSection("contact")
-        return
+        setActiveSection("contact");
+        return;
       }
 
       for (const section of sections) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
           }
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    handleScroll() // Call once to set initial state
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [mounted])
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Call once to set initial state
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mounted]);
 
   // Dark mode toggle
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted) return;
 
     if (isDarkMode) {
-      document.documentElement.classList.add("dark")
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("dark")
+      document.documentElement.classList.remove("dark");
     }
-  }, [isDarkMode, mounted])
+  }, [isDarkMode, mounted]);
 
   // Typing animation effect
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted) return;
 
-    let timeout: NodeJS.Timeout
+    let timeout: NodeJS.Timeout;
     if (isTyping && typedText.length < fullText.length) {
       timeout = setTimeout(() => {
-        setTypedText(fullText.slice(0, typedText.length + 1))
-      }, 150)
+        setTypedText(fullText.slice(0, typedText.length + 1));
+      }, 150);
     } else if (typedText.length === fullText.length) {
-      setIsTyping(false)
+      setIsTyping(false);
     }
-    return () => clearTimeout(timeout)
-  }, [typedText, isTyping, mounted])
+    return () => clearTimeout(timeout);
+  }, [typedText, isTyping, mounted]);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted) return;
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleSections((prev) => new Set([...prev, entry.target.id]))
+            setVisibleSections((prev) => new Set([...prev, entry.target.id]));
           }
-        })
+        });
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
-    const sections = document.querySelectorAll("section[id]")
+    const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => {
-      observerRef.current?.observe(section)
-    })
+      observerRef.current?.observe(section);
+    });
 
     return () => {
-      observerRef.current?.disconnect()
-    }
-  }, [mounted])
+      observerRef.current?.disconnect();
+    };
+  }, [mounted]);
 
   const projects = [
     {
@@ -145,13 +168,14 @@ export default function Portfolio() {
     },
     {
       title: "Weather Dashboard",
-      description: "A responsive weather dashboard with location-based forecasts and interactive charts.",
+      description:
+        "A responsive weather dashboard with location-based forecasts and interactive charts.",
       tech: ["React", "Chart.js", "Weather API", "Tailwind CSS"],
       github: "#",
       demo: "#",
       image: "/placeholder.svg?height=200&width=300",
     },
-  ]
+  ];
 
   const certificates = [
     {
@@ -190,7 +214,7 @@ export default function Portfolio() {
       verifyUrl: "#",
       skills: ["MongoDB", "NoSQL", "Database Design", "Aggregation"],
     },
-  ]
+  ];
 
   // Don't render until mounted to prevent hydration mismatch
   if (!mounted) {
@@ -198,7 +222,7 @@ export default function Portfolio() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="animate-pulse">Loading...</div>
       </div>
-    )
+    );
   }
 
   return (
@@ -260,7 +284,8 @@ export default function Portfolio() {
         }
 
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0px);
           }
           50% {
@@ -269,7 +294,8 @@ export default function Portfolio() {
         }
 
         @keyframes pulse {
-          0%, 100% {
+          0%,
+          100% {
             opacity: 1;
           }
           50% {
@@ -278,10 +304,15 @@ export default function Portfolio() {
         }
 
         @keyframes bounce {
-          0%, 20%, 53%, 80%, 100% {
+          0%,
+          20%,
+          53%,
+          80%,
+          100% {
             transform: translateY(0);
           }
-          40%, 43% {
+          40%,
+          43% {
             transform: translateY(-10px);
           }
           70% {
@@ -293,7 +324,8 @@ export default function Portfolio() {
         }
 
         @keyframes wiggle {
-          0%, 7% {
+          0%,
+          7% {
             transform: rotateZ(0);
           }
           15% {
@@ -311,7 +343,8 @@ export default function Portfolio() {
           35% {
             transform: rotateZ(-4deg);
           }
-          40%, 100% {
+          40%,
+          100% {
             transform: rotateZ(0);
           }
         }
@@ -367,12 +400,24 @@ export default function Portfolio() {
           animation: slideDown 0.5s ease-out forwards;
         }
 
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-        .stagger-5 { animation-delay: 0.5s; }
-        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-1 {
+          animation-delay: 0.1s;
+        }
+        .stagger-2 {
+          animation-delay: 0.2s;
+        }
+        .stagger-3 {
+          animation-delay: 0.3s;
+        }
+        .stagger-4 {
+          animation-delay: 0.4s;
+        }
+        .stagger-5 {
+          animation-delay: 0.5s;
+        }
+        .stagger-6 {
+          animation-delay: 0.6s;
+        }
 
         .hover-lift {
           transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -392,7 +437,7 @@ export default function Portfolio() {
         }
 
         .typing-cursor::after {
-          content: '|';
+          content: "|";
           animation: pulse 1s infinite;
         }
 
@@ -415,183 +460,40 @@ export default function Portfolio() {
       `}</style>
 
       {/* Floating Navigation */}
-     <Nav 
-      mounted={mounted}
-      activeSection={activeSection}
-      setCurrentLanguage={setCurrentLanguage}
-      currentLanguage={currentLanguage}
-      setIsDarkMode={setIsDarkMode}
-      isDarkMode={isDarkMode}
-      setIsMenuOpen={setIsMenuOpen}
-      isMenuOpen={isMenuOpen}
-     />
+      <Nav
+        mounted={mounted}
+        activeSection={activeSection}
+        setCurrentLanguage={setCurrentLanguage}
+        currentLanguage={currentLanguage}
+        setIsDarkMode={setIsDarkMode}
+        isDarkMode={isDarkMode}
+        setIsMenuOpen={setIsMenuOpen}
+        isMenuOpen={isMenuOpen}
+      />
 
       {/* Hero Section */}
-    <Hero currentLanguage={currentLanguage} typedText={typedText} />
+      <Hero currentLanguage={currentLanguage} typedText={typedText} />
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative">
-        <div className="max-w-7xl mx-auto">
-          <div
-            className={`text-center mb-16 lg:mb-20 transition-all duration-1000 ${
-              visibleSections.has("about") ? "animate-fade-in-up" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              {currentLanguage === "en" ? "About Me" : "ကျွန်တော့်အကြောင်း"}
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              {currentLanguage === "en"
-                ? "I'm a passionate full-stack developer with 5+ years of experience building web applications. I love turning complex problems into simple, beautiful, and intuitive solutions."
-                : "ကျွန်တော်သည် ၅ နှစ်ကျော် အတွေ့အကြုံရှိသော စိတ်အားထက်သန်သည့် full-stack developer တစ်ယောက်ဖြစ်ပါသည်။ ရှုပ်ထွေးသော ပြဿနာများကို ရိုးရှင်းပြီး လှပသော ဖြေရှင်းချက်များအဖြစ် ပြောင်းလဲပေးရာတွင် နှစ်သက်ပါသည်။"}
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            <div
-              className={`transition-all duration-1000 delay-200 ${
-                visibleSections.has("about") ? "animate-fade-in-left" : "opacity-0 -translate-x-8"
-              }`}
-            >
-              <h3 className="text-2xl lg:text-3xl font-semibold mb-6">
-                {currentLanguage === "en" ? "My Journey" : "ကျွန်တော့်ခရီးစဉ်"}
-              </h3>
-              <div className="space-y-6">
-                <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
-                  {currentLanguage === "en"
-                    ? "Started my journey in computer science and fell in love with web development. I've worked with startups and established companies, helping them build scalable and user-friendly applications."
-                    : "ကွန်ပျူတာသိပ္ပံပညာမှ စတင်ခဲ့ပြီး web development ကို နှစ်သက်လာခဲ့ပါသည်။ startup များနှင့် တည်ထောင်ပြီးသား ကုမ္ပဏီများနှင့် အလုပ်လုပ်ကိုင်ခဲ့ပြီး scalable နှင့် အသုံးပြုရလွယ်ကူသော application များ တည်ဆောက်ရာတွင် ကူညီခဲ့ပါသည်။"}
-                </p>
-                <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
-                  {currentLanguage === "en"
-                    ? "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities."
-                    : "ကုဒ်မရေးနေချိန်တွင် နည်းပညာအသစ်များကို လေ့လာခြင်း၊ open-source project များတွင် ပါဝင်ကူညီခြင်း သို့မဟုတ် ပြင်ပလှုပ်ရှားမှုများကို ပျော်ရွှင်နေတတ်ပါသည်။"}
-                </p>
-              </div>
-
-              {/* Experience Highlights */}
-              <div className="mt-8 space-y-4">
-                <h4 className="text-lg font-semibold text-primary">
-                  {currentLanguage === "en" ? "Experience Highlights" : "အတွေ့အကြုံ အဓိကများ"}
-                </h4>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-4 bg-background rounded-lg border">
-                    <div className="text-2xl font-bold text-primary">5+</div>
-                    <div className="text-sm text-muted-foreground">
-                      {currentLanguage === "en" ? "Years Experience" : "နှစ် အတွေ့အကြုံ"}
-                    </div>
-                  </div>
-                  <div className="text-center p-4 bg-background rounded-lg border">
-                    <div className="text-2xl font-bold text-primary">50+</div>
-                    <div className="text-sm text-muted-foreground">
-                      {currentLanguage === "en" ? "Projects Completed" : "ပရောဂျက် ပြီးစီး"}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className={`transition-all duration-1000 delay-400 ${
-                visibleSections.has("about") ? "animate-fade-in-right" : "opacity-0 translate-x-8"
-              }`}
-            >
-              <h3 className="text-2xl lg:text-3xl font-semibold mb-6">
-                {currentLanguage === "en" ? "Skills & Technologies" : "ကျွမ်းကျင်မှုများနှင့် နည်းပညာများ"}
-              </h3>
-
-              {/* All Skills */}
-              <div className="space-y-6">
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    "React",
-                    "Next.js",
-                    "TypeScript",
-                    "JavaScript",
-                    "Tailwind CSS",
-                    "HTML5",
-                    "CSS3",
-                    "Node.js",
-                    "Python",
-                    "Express.js",
-                    "FastAPI",
-                    "REST APIs",
-                    "GraphQL",
-                    "MongoDB",
-                    "PostgreSQL",
-                    "MySQL",
-                    "AWS",
-                    "Docker",
-                    "Kubernetes",
-                    "Redis",
-                  ].map((skill, index) => (
-                    <Badge
-                      key={skill}
-                      variant="secondary"
-                      className={`text-sm py-3 px-4 hover-scale transition-all duration-300 cursor-pointer hover:shadow-lg rounded-full ${
-                        visibleSections.has("about") ? "animate-fade-in-up" : "opacity-0"
-                      }`}
-                      style={{ animationDelay: `${0.6 + index * 0.05}s` }}
-                    >
-                      <span className="relative">
-                        {skill}
-                        <div className="absolute inset-0 bg-primary/10 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                      </span>
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-
-              {/* Skill Level Indicators */}
-              <div
-                className={`mt-8 transition-all duration-1000 delay-1000 ${
-                  visibleSections.has("about") ? "animate-fade-in-up" : "opacity-0 translate-y-4"
-                }`}
-              >
-                <h4 className="text-lg font-medium mb-4 text-primary">
-                  {currentLanguage === "en" ? "Proficiency Levels" : "ကျွမ်းကျင်မှုအဆင့်များ"}
-                </h4>
-                <div className="space-y-3">
-                  {[
-                    { skill: "React/Next.js", level: 95 },
-                    { skill: "TypeScript/JavaScript", level: 90 },
-                    { skill: "Node.js/Python", level: 85 },
-                    { skill: "AWS/Cloud Services", level: 80 },
-                    { skill: "Database Design", level: 85 },
-                  ].map((item, index) => (
-                    <div key={item.skill} className="group">
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm font-medium">{item.skill}</span>
-                        <span className="text-sm text-muted-foreground font-bold">{item.level}%</span>
-                      </div>
-                      <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary rounded-full transition-all duration-1500 ease-out"
-                          style={{
-                            width: visibleSections.has("about") ? `${item.level}%` : "0%",
-                            transitionDelay: `${1.2 + index * 0.2}s`,
-                          }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <About
+        currentLanguage={currentLanguage}
+        visibleSections={visibleSections}
+      />
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
           <div
             className={`text-center mb-20 transition-all duration-1000 ${
-              visibleSections.has("projects") ? "animate-fade-in-up" : "opacity-0 translate-y-8"
+              visibleSections.has("projects")
+                ? "animate-fade-in-up"
+                : "opacity-0 translate-y-8"
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              {currentLanguage === "en" ? "Featured Projects" : "အဓိက ပရောဂျက်များ"}
+              {currentLanguage === "en"
+                ? "Featured Projects"
+                : "အဓိက ပရောဂျက်များ"}
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               {currentLanguage === "en"
@@ -605,7 +507,9 @@ export default function Portfolio() {
               <Card
                 key={index}
                 className={`overflow-hidden hover-lift transition-all duration-1000 group ${
-                  visibleSections.has("projects") ? "animate-scale-in" : "opacity-0 scale-90"
+                  visibleSections.has("projects")
+                    ? "animate-scale-in"
+                    : "opacity-0 scale-90"
                 }`}
                 style={{ animationDelay: `${0.2 + index * 0.2}s` }}
               >
@@ -619,13 +523,31 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <div className="flex gap-4">
-                      <Button variant="secondary" size="icon" asChild className="hover-scale">
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="secondary"
+                        size="icon"
+                        asChild
+                        className="hover-scale"
+                      >
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Github className="h-5 w-5" />
                         </a>
                       </Button>
-                      <Button variant="secondary" size="icon" asChild className="hover-scale">
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="secondary"
+                        size="icon"
+                        asChild
+                        className="hover-scale"
+                      >
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <ExternalLink className="h-5 w-5" />
                         </a>
                       </Button>
@@ -636,7 +558,9 @@ export default function Portfolio() {
                   <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-base leading-relaxed">{project.description}</CardDescription>
+                  <CardDescription className="text-base leading-relaxed">
+                    {project.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
@@ -659,7 +583,9 @@ export default function Portfolio() {
           {/* See More Projects Button */}
           <div
             className={`text-center mt-16 transition-all duration-1000 delay-500 ${
-              visibleSections.has("projects") ? "animate-fade-in-up" : "opacity-0 translate-y-4"
+              visibleSections.has("projects")
+                ? "animate-fade-in-up"
+                : "opacity-0 translate-y-4"
             }`}
           >
             <p className="text-muted-foreground mb-6 text-lg">
@@ -667,20 +593,31 @@ export default function Portfolio() {
                 ? "Want to see more of my work? Check out my complete portfolio."
                 : "ကျွန်တော့်အလုပ်များကို ပိုမိုကြည့်ရှုလိုပါသလား? ကျွန်တော့်ရဲ့ အပြည့်အစုံ portfolio ကို ကြည့်ရှုပါ။"}
             </p>
-            <Button variant="outline" size="lg" className="hover-lift rounded-full">
+            <Button
+              variant="outline"
+              size="lg"
+              className="hover-lift rounded-full"
+            >
               <ExternalLink className="mr-3 h-5 w-5" />
-              {currentLanguage === "en" ? "See More Projects" : "ပရောဂျက်များ ပိုမိုကြည့်ရန်"}
+              {currentLanguage === "en"
+                ? "See More Projects"
+                : "ပရောဂျက်များ ပိုမိုကြည့်ရန်"}
             </Button>
           </div>
         </div>
       </section>
 
       {/* Certificates Section */}
-      <section id="certificates" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative">
+      <section
+        id="certificates"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative"
+      >
         <div className="max-w-7xl mx-auto">
           <div
             className={`text-center mb-20 transition-all duration-1000 ${
-              visibleSections.has("certificates") ? "animate-fade-in-up" : "opacity-0 translate-y-8"
+              visibleSections.has("certificates")
+                ? "animate-fade-in-up"
+                : "opacity-0 translate-y-8"
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -698,7 +635,9 @@ export default function Portfolio() {
               <Card
                 key={index}
                 className={`overflow-hidden hover-lift transition-all duration-1000 group ${
-                  visibleSections.has("certificates") ? "animate-scale-in" : "opacity-0 scale-90"
+                  visibleSections.has("certificates")
+                    ? "animate-scale-in"
+                    : "opacity-0 scale-90"
                 }`}
                 style={{ animationDelay: `${0.2 + index * 0.15}s` }}
               >
@@ -717,8 +656,17 @@ export default function Portfolio() {
                     <div className="flex-1">
                       <CardTitle className="text-xl mb-3 flex items-center justify-between group-hover:text-primary transition-colors duration-300">
                         <span>{cert.title}</span>
-                        <Button variant="ghost" size="icon" asChild className="hover-scale">
-                          <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          asChild
+                          className="hover-scale"
+                        >
+                          <a
+                            href={cert.verifyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             <ExternalLink className="h-5 w-5" />
                           </a>
                         </Button>
@@ -726,9 +674,14 @@ export default function Portfolio() {
                       <div className="space-y-2 text-sm text-muted-foreground">
                         <p className="font-medium text-base">{cert.issuer}</p>
                         <p>
-                          {currentLanguage === "en" ? "Issued:" : "ထုတ်ပေးသည့်ခုနှစ်:"} {cert.date}
+                          {currentLanguage === "en"
+                            ? "Issued:"
+                            : "ထုတ်ပေးသည့်ခုနှစ်:"}{" "}
+                          {cert.date}
                         </p>
-                        <p className="font-mono text-xs bg-muted px-2 py-1 rounded">ID: {cert.credentialId}</p>
+                        <p className="font-mono text-xs bg-muted px-2 py-1 rounded">
+                          ID: {cert.credentialId}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -754,7 +707,9 @@ export default function Portfolio() {
           {/* Additional Certifications Note */}
           <div
             className={`text-center mt-16 transition-all duration-1000 delay-500 ${
-              visibleSections.has("certificates") ? "animate-fade-in-up" : "opacity-0 translate-y-4"
+              visibleSections.has("certificates")
+                ? "animate-fade-in-up"
+                : "opacity-0 translate-y-4"
             }`}
           >
             <p className="text-muted-foreground mb-6 text-lg">
@@ -762,8 +717,14 @@ export default function Portfolio() {
                 ? "Continuously expanding my knowledge through professional development"
                 : "ပရော်ဖက်ရှင်နယ် ဖွံ့ဖြိုးတိုးတက်မှုများမှတစ်ဆင့် ကျွန်တော့်အသိပညာကို စဉ်ဆက်မပြတ် တိုးချဲ့နေပါသည်"}
             </p>
-            <Button variant="outline" size="lg" className="hover-lift rounded-full">
-              {currentLanguage === "en" ? "View All Certifications" : "လက်မှတ်အားလုံးကြည့်ရန်"}
+            <Button
+              variant="outline"
+              size="lg"
+              className="hover-lift rounded-full"
+            >
+              {currentLanguage === "en"
+                ? "View All Certifications"
+                : "လက်မှတ်အားလုံးကြည့်ရန်"}
             </Button>
           </div>
         </div>
@@ -773,11 +734,15 @@ export default function Portfolio() {
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div
           className={`max-w-7xl mx-auto text-center transition-all duration-1000 ${
-            visibleSections.has("contact") ? "animate-fade-in-up" : "opacity-0 translate-y-8"
+            visibleSections.has("contact")
+              ? "animate-fade-in-up"
+              : "opacity-0 translate-y-8"
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            {currentLanguage === "en" ? "Let's Work Together" : "အတူတကွ လုပ်ကိုင်ကြရအောင်"}
+            {currentLanguage === "en"
+              ? "Let's Work Together"
+              : "အတူတကွ လုပ်ကိုင်ကြရအောင်"}
           </h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
             {currentLanguage === "en"
@@ -792,7 +757,11 @@ export default function Portfolio() {
                 text: currentLanguage === "en" ? "Email Me" : "အီးမေးလ်ပို့ရန်",
                 href: "mailto:john@example.com",
               },
-              { icon: Linkedin, text: "LinkedIn", href: "https://linkedin.com" },
+              {
+                icon: Linkedin,
+                text: "LinkedIn",
+                href: "https://linkedin.com",
+              },
               { icon: Github, text: "GitHub", href: "https://github.com" },
             ].map((item, index) => (
               <Button
@@ -801,7 +770,9 @@ export default function Portfolio() {
                 variant={index === 0 ? "default" : "outline"}
                 asChild
                 className={`hover-lift transition-all duration-1000 text-lg px-8 py-6 rounded-full ${
-                  visibleSections.has("contact") ? "animate-fade-in-up" : "opacity-0 translate-y-4"
+                  visibleSections.has("contact")
+                    ? "animate-fade-in-up"
+                    : "opacity-0 translate-y-4"
                 }`}
                 style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
@@ -826,5 +797,5 @@ export default function Portfolio() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
