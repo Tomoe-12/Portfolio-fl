@@ -22,7 +22,7 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
   const [mounted, setMounted] = useState(false);
 
-  const fullText = "Khun Thi Han";
+  const fullText = currentLanguage === "en" ? "Khun Thi Han" : "ခွန်သီဟန်";
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Handle hydration
@@ -42,7 +42,6 @@ export default function Portfolio() {
   // Active section tracking
   useEffect(() => {
     if (!mounted) return;
-
     const handleScroll = () => {
       const sections = ["home", "about", "projects", "certificates", "contact"];
       const scrollPosition = window.scrollY + 100;
@@ -103,6 +102,12 @@ export default function Portfolio() {
     return () => clearTimeout(timeout);
   }, [typedText, isTyping, mounted]);
 
+  useEffect(() => {
+    if (!mounted) return;
+    setTypedText("");
+    setIsTyping(true);
+  }, [currentLanguage, mounted]);
+
   // Intersection Observer for scroll animations
   useEffect(() => {
     if (!mounted) return;
@@ -127,7 +132,6 @@ export default function Portfolio() {
       observerRef.current?.disconnect();
     };
   }, [mounted]);
-
 
   // Don't render until mounted to prevent hydration mismatch
   if (!mounted) {
@@ -355,9 +359,8 @@ export default function Portfolio() {
         }
 
         .floating-nav {
-          backdrop-filter: blur(20px);
-          background: rgba(255, 255, 255, 0.8);
-          border: 1px solid rgba(255, 255, 255, 0.3);
+          background: rgba(229, 231, 235, 0.8);
+          border: 1px solid rgba(229, 231, 235, 1);
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
@@ -369,6 +372,11 @@ export default function Portfolio() {
 
         .nav-indicator {
           transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .backdrop-saturate-150 {
+          backdrop-filter: saturate(150%) blur(10px);
+          -webkit-backdrop-filter: saturate(150%) blur(10px);
         }
       `}</style>
 
@@ -382,6 +390,8 @@ export default function Portfolio() {
         isDarkMode={isDarkMode}
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
+        scrollY={scrollY}
+        setActiveSection={setActiveSection}
       />
 
       {/* Hero Section */}
@@ -411,7 +421,7 @@ export default function Portfolio() {
       />
 
       {/* Footer */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }
