@@ -115,7 +115,7 @@ const Certificates = ({
           </div>
 
           {/* Additional Certifications Note */}
-          <div
+          {/* <div
             className={`text-center mt-16 transition-all duration-1000 delay-500 ${
               visibleSections.has("certificates")
                 ? "animate-fade-in-up"
@@ -136,7 +136,7 @@ const Certificates = ({
                 ? "View All Certifications"
                 : "လက်မှတ်အားလုံးကြည့်ရန်"}
             </Button>
-          </div>
+          </div> */}
         </div>
       </section>
   )
