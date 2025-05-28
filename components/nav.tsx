@@ -78,9 +78,9 @@ const Nav = ({
       <div className="px-2 rounded-full transition-all duration-300 flex items-center justify-center w-auto max-w-md mx-auto  ">
         {/* bg-gray-200/80 backdrop-blur-sm shadow-sm */}
         <nav
-          className={`flex items-center justify-center backdrop-blur-sm rounded-full shadow-sm ${
+          className={`flex items-center justify-center rounded-full shadow-sm ${
             scrollY > 100
-              ? "bg-white/80 shadow-md backdrop-saturate-150 dark:bg-gray-900/80"
+              ? "bg-white/80 shadow-md dark:bg-gray-900/80"
               : "bg-transparent shadow-none"
           }`}
         >

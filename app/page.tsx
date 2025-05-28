@@ -8,6 +8,8 @@ import Projects from "@/components/Sections/projects";
 import Certificates from "@/components/Sections/certificates";
 import Contact from "@/components/Sections/contact";
 import Footer from "@/components/footer";
+import {Burmese_name,English_name} from '@/data/personal'
+
 
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +24,7 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
   const [mounted, setMounted] = useState(false);
 
-  const fullText = currentLanguage === "en" ? "Khun Thi Han" : "ခွန်သီဟန်";
+  const fullText = currentLanguage === "en" ? English_name : Burmese_name;
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Handle hydration
@@ -379,6 +381,7 @@ export default function Portfolio() {
           -webkit-backdrop-filter: saturate(150%) blur(10px);
         }
       `}</style>
+
 
       {/* Floating Navigation */}
       <Nav
