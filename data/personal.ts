@@ -12,6 +12,7 @@ export const skills = [
   "PHP",
   "JavaScript",
   "Tailwind CSS",
+  "Shadcn UI",
   "Bootstrap",
   "HTML5",
   "CSS3",
@@ -22,6 +23,7 @@ export const skills = [
   "MongoDB",
   "PostgreSQL",
   "MySQL",
+  "Drizzle ORM",
 ];
 
 export const Proficiency_Levels = [
