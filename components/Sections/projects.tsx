@@ -117,7 +117,7 @@ const Projects: React.FC<ProjectsProps> = ({
           </div>
 
           {/* See More Projects Button */}
-          <div
+          {/* <div
             className={`text-center mt-16 transition-all duration-1000 delay-500 ${
               visibleSections.has("projects")
                 ? "animate-fade-in-up"
@@ -139,7 +139,7 @@ const Projects: React.FC<ProjectsProps> = ({
                 ? "See More Projects"
                 : "ပရောဂျက်များ ပိုမိုကြည့်ရန်"}
             </Button>
-          </div>
+          </div> */}
         </div>
       </section>
   )
