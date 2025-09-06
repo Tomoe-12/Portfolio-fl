@@ -34,12 +34,12 @@ const Contact = ({ visibleSections, currentLanguage }: ContactProps) => {
             {
               icon: Mail,
               text: currentLanguage === "en" ? "Email Me" : "အီးမေးလ်ပို့ရန်",
-              href: "mailto:li8993han@gmail.com",
+              href: "mailto:khunthihan.official@gmail.com",
             },
             {
               icon: Linkedin,
               text: "LinkedIn",
-              href: "https://linkedin.com",
+              href: "https://www.linkedin.com/in/khun-thi-han-b698a0382/",
             },
             {
               icon: Github,
