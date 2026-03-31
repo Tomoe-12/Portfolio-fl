@@ -10,6 +10,7 @@ export interface Experience {
   type: "competition" | "bootcamp" | "hackathon" | "work";
   image?: string;
   link?: string;
+  certificate?: string;
 }
 
 const experiences: Experience[] = [
@@ -73,6 +74,7 @@ const experiences: Experience[] = [
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xzZnjYnyJpVGd4wXIsaVXqPdAed8sI.png",
     link: "https://lnkd.in/gVvkh56x",
+    certificate: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9riKBMVqhc0SLW26wuaJ5tD93HCGIoUn8ATb7",
   },
 ];
 
