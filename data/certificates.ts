@@ -1,22 +1,5 @@
 const certificates = [
   {
-    title: "KBZPay Mini App Developers Bootcamp & Hackathon",
-    issuer: "KBZPay",
-    date: "2024",
-    credentialId: "KBZPAY-MINIAPP-2024",
-    image: "https://play-lh.googleusercontent.com/RZ5QrCFSRjJqVEZpd7c6RKsEVaS0M2TcqHRWH1wbnXFSsJt3cWVJ9EOAMaOjX02Pmg",
-    verifyUrl: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9riKBMVqhc0SLW26wuaJ5tD93HCGIoUn8ATb7",
-    skills: [
-      "AppCube",
-      "Huawei Technology",
-      "Mini App Development",
-      "Low-Code Platform",
-      "UI Builder",
-      "Workflow Designer",
-      "KBZPay Payment Integration",
-    ],
-  },
-  {
     title: "NEXT JS DEVELOPER COURSE",
     issuer: "Code Hub Myanmar",
     date: "2024-12-17",

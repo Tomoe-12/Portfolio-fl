@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
-import { ArrowRight, ExternalLink, Github, MapPin, Calendar, Shield, Zap, Award } from 'lucide-react'
+import { ArrowRight, ExternalLink, Github, MapPin, Calendar, Shield, Zap } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import projects from '@/data/projects'
 import experiences from '@/data/experiences'
@@ -258,25 +258,6 @@ const Projects: React.FC<ProjectsProps> = ({
                       </Badge>
                     ))}
                   </div>
-
-                  {/* Certificate */}
-                  {exp.certificate && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      asChild
-                      className="w-fit rounded-full mt-1 hover-scale"
-                    >
-                      <a
-                        href={exp.certificate}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Award className="h-3.5 w-3.5 mr-2" />
-                        View Certificate
-                      </a>
-                    </Button>
-                  )}
                 </div>
               </div>
             );
