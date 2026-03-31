@@ -14,13 +14,13 @@ export interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: "3rd ASEAN Cyber Shield (ACS) Online Education Bootcamp",
+    title: "2nd ASEAN Cyber Shield (ACS) Online Education Bootcamp",
     organization: "Korea Internet & Security Agency (KISA)",
     role: "Selected Representative — Myanmar",
     date: "Nov 18–21, 2025",
     location: "Lotte Hotel Busan / K-shield Training Center, Busan, Republic of Korea",
     description:
-      "Officially selected and invited as a representative of Myanmar to participate in the 3rd ASEAN Cyber Shield Online Education Bootcamp, organized by KISA under the ASEAN-Korea Cooperation Fund (AKCF). The event focused on strengthening cybersecurity capabilities across the ASEAN region.",
+      "Officially selected and invited as a representative of Myanmar to participate in the 2nd ASEAN Cyber Shield Online Education Bootcamp, organized by KISA under the ASEAN-Korea Cooperation Fund (AKCF). The event focused on strengthening cybersecurity capabilities across the ASEAN region.",
     highlights: [
       "Officially selected as Myanmar representative from University of Computer Studies, Taunggyi",
       "Intensive 4-day cybersecurity training covering web exploitation, pentesting, and cryptography",
@@ -43,19 +43,20 @@ const experiences: Experience[] = [
     link: "https://aseancybershield.org",
   },
   {
-    title: "KBZPay Mini App Hackathon",
+    title: "KBZPay Mini App Developers Bootcamp & Hackathon",
     organization: "KBZPay",
     role: "Participant — Developers Bootcamp with Hackathon",
     date: "2024",
-    location: "Myanmar",
+    location: "Myanmar (Online)",
     description:
-      "Participated in the KBZPay Mini Apps Developers Bootcamp & Hackathon program, building functional mini apps using AppCube — a low-code/no-code platform powered by Huawei technology. The program covered both Basic and Advanced levels of AppCube development.",
+      "Participated in the KBZPay Mini Apps Developers Bootcamp & Hackathon program, building functional mini apps using AppCube — a low-code platform powered by Huawei technology. Completed both Basic and Advanced levels, covering everything from UI Builder and Data Modeling to Custom Business Logic and Payment Integration.",
     highlights: [
-      "Completed AppCube Basic Level: Core Architecture, UI Builder, Workflow Designer, and Data Modeling Tools",
-      "Completed AppCube Advanced Level: Custom Business Logic, Advanced Workflow APIs, Payment Integration",
-      "Focused on Reusability, Security, Performance, and Scalability optimization",
-      "Built and delivered 1–4 mini app projects over the course of the program",
-      "Attended live online sessions with professional instructor and supervisor guidance",
+      "Completed AppCube Basic Level: Core Architecture, UI Builder, Workflow Designer, and Data Modeling Tools to build functional Mini Apps",
+      "Completed AppCube Advanced Level: Custom Business Logic, Advanced Workflow APIs, KBZPay Payment Integration (AIS APIs)",
+      "Deep focus on Reusability, Security, Performance, and Scalability optimization for Mini Apps",
+      "Built and delivered 1–4 mini app projects across the program with online supervision",
+      "Attended live online sessions with a professional AppCube instructor and project supervisor",
+      "Mini Apps run inside the KBZPay Super App on Android & iOS without additional downloads",
     ],
     tags: [
       "AppCube",
@@ -65,10 +66,12 @@ const experiences: Experience[] = [
       "Low-Code",
       "Payment Integration",
       "Hackathon",
+      "UI Builder",
+      "Workflow",
     ],
     type: "hackathon",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2YkXOqIj3LGcdDXowMMdulduOKoAh3.png",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xzZnjYnyJpVGd4wXIsaVXqPdAed8sI.png",
     link: "https://lnkd.in/gVvkh56x",
   },
 ];
