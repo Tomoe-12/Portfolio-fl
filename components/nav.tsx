@@ -108,7 +108,7 @@ const Nav = ({
                   }}
                 />
 
-                {["home", "about", "projects", "experience", "certificates", "contact"].map(
+                {["home", "about", "projects", "certificates", "contact"].map(
                   (item) => (
                     <button
                       key={item}
@@ -189,7 +189,7 @@ const Nav = ({
               }`}
             >
               <div className="flex flex-col gap-2">
-                {["home", "about", "projects", "experience", "certificates", "contact"].map(
+                {["home", "about", "projects", "certificates", "contact"].map(
                   (item, index) => (
                     <button
                       key={item}
