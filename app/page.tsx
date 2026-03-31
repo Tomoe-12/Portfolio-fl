@@ -5,6 +5,7 @@ import Nav from "@/components/nav";
 import Hero from "@/components/Sections/hero";
 import About from "@/components/Sections/about";
 import Projects from "@/components/Sections/projects";
+import Experience from "@/components/Sections/experience";
 import Certificates from "@/components/Sections/certificates";
 import Contact from "@/components/Sections/contact";
 import Footer from "@/components/footer";
@@ -45,7 +46,7 @@ export default function Portfolio() {
   useEffect(() => {
     if (!mounted) return;
     const handleScroll = () => {
-      const sections = ["home", "about", "projects", "certificates", "contact"];
+      const sections = ["home", "about", "projects", "experience", "certificates", "contact"];
       const scrollPosition = window.scrollY + 100;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
@@ -408,6 +409,12 @@ export default function Portfolio() {
 
       {/* Projects Section */}
       <Projects
+        visibleSections={visibleSections}
+        currentLanguage={currentLanguage}
+      />
+
+      {/* Experience Section */}
+      <Experience
         visibleSections={visibleSections}
         currentLanguage={currentLanguage}
       />
