@@ -54,7 +54,7 @@ const experiences: Experience[] = [
       "Completed AppCube Basic Level: Core Architecture, UI Builder, Workflow Designer, and Data Modeling Tools to build functional Mini Apps",
       "Completed AppCube Advanced Level: Custom Business Logic, Advanced Workflow APIs, KBZPay Payment Integration (AIS APIs)",
       "Deep focus on Reusability, Security, Performance, and Scalability optimization for Mini Apps",
-      "Built and delivered one mini app project as the final hackathon deliverable",
+      "Built and delivered 1–4 mini app projects across the program with online supervision",
       "Attended live online sessions with a professional AppCube instructor and project supervisor",
       "Mini Apps run inside the KBZPay Super App on Android & iOS without additional downloads",
     ],
