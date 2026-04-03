@@ -17,7 +17,7 @@ export default function Portfolio() {
   const [typedText, setTypedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(["home"])
+    new Set(["home", "about", "projects", "experience", "certificates", "contact"])
   );
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState("en");
