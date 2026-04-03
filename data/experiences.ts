@@ -40,12 +40,18 @@ const experiences: Experience[] = [
       "KISA",
     ],
     type: "bootcamp",
+    // image:
+    //   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3Ah6hb6gkNkFQ0oiS8P78rzWMWyksW.png",
+    // coverImages: [
+    //   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3Ah6hb6gkNkFQ0oiS8P78rzWMWyksW.png",
+    // ],
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3Ah6hb6gkNkFQ0oiS8P78rzWMWyksW.png",
+      "https://aseanrokfund.org/files/media/2025/12/251119-%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84_Bootcamp.jpeg",
     coverImages: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3Ah6hb6gkNkFQ0oiS8P78rzWMWyksW.png",
+      "https://aseanrokfund.org/files/media/2025/12/251119-%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84_Bootcamp.jpeg",
     ],
-    link: "https://aseancybershield.org",
+    // link: "https://aseancybershield.org",
+    link: 'https://aseanrokfund.org/project-activity/2025-asean-cyber-shield-hacking-contest-and-bootcamp/',
   },
   {
     title: "KBZPay Mini App Developers Bootcamp & Hackathon",
@@ -59,7 +65,7 @@ const experiences: Experience[] = [
       "Completed AppCube Basic Level: Core Architecture, UI Builder, Workflow Designer & Data Modeling Tools",
       "Completed AppCube Advanced Level: Custom Business Logic, Advanced Workflow APIs, KBZPay AIS Payment Integration",
       "Deep focus on Reusability, Security, Performance and Scalability optimization for Mini Apps",
-      "Built and delivered 1–4 mini app projects under online supervision from a professional AppCube instructor",
+      "Built and delivered 1 mini app projects under online supervision from a professional AppCube instructor",
       "Mini Apps run natively inside KBZPay Super App on Android & iOS — no separate download needed",
       "Intensive program: 10 sessions (Basic) + 10 sessions (Advanced) + 10 practice sessions with projects",
     ],
@@ -74,13 +80,19 @@ const experiences: Experience[] = [
       "UI Builder",
     ],
     type: "hackathon",
+    // image:
+    //   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xzZnjYnyJpVGd4wXIsaVXqPdAed8sI.png",
+    // coverImages: [
+    //   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xzZnjYnyJpVGd4wXIsaVXqPdAed8sI.png",
+    //   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-POeflDckuhlGUsYhpgsl7uf1vJUPHW.png",
+    // ],
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xzZnjYnyJpVGd4wXIsaVXqPdAed8sI.png",
+      "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9erOR2JzWjyOtqhiva3P5BXTk0S1NFIC9omQU",
     coverImages: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xzZnjYnyJpVGd4wXIsaVXqPdAed8sI.png",
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-POeflDckuhlGUsYhpgsl7uf1vJUPHW.png",
+      "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9erOR2JzWjyOtqhiva3P5BXTk0S1NFIC9omQU",
+      "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9erOR2JzWjyOtqhiva3P5BXTk0S1NFIC9omQU",
     ],
-    link: "https://lnkd.in/gVvkh56x",
+    link: "https://www.linkedin.com/posts/kbzpay_%E1%80%86%E1%80%94%E1%80%9E%E1%80%85%E1%80%90-idea-%E1%80%90%E1%80%80%E1%80%94-%E1%80%90%E1%80%80%E1%80%9A-mini-app-%E1%80%90%E1%80%85%E1%80%81%E1%80%96%E1%80%85%E1%80%9C%E1%80%90%E1%80%A1%E1%80%91-activity-7445666401434071040-Vlmx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF51sIEBbWtNcSiEOkHh3pKYIq496mM-aow",
   },
 ];
 

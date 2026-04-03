@@ -4,7 +4,8 @@ const certificates = [
     issuer: "Code Hub Myanmar",
     date: "2024-12-17",
     credentialId: "NEXTB2010",
-    image: "https://www.codehubmm.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.121bbc0b.jpg&w=96&q=75",
+    // image: "https://www.codehubmm.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.121bbc0b.jpg&w=96&q=75",
+    image: 'https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9KgYa31iNP6Qqa83Slmv9gZduTA2zKLfoEWY7',
     verifyUrl: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9ycABM0x6m7kQRd5x8bF9ryjChNgL0nwTvOGY",
     skills: [
       "Next.js",
@@ -54,7 +55,8 @@ const certificates = [
     issuer: "KBZPay",
     date: "2025-07-10",
     credentialId: "KBZPAY-MINIAPP-HACKATHON-2025",
-    image: "https://play-lh.googleusercontent.com/PCQtKMEfkXGUUkMBGDmCrHfKFIv5YLhIrP1a3UMjjdGMEHIkMVFOYU_DH_6V2VXs1Q=w240-h480-rw",
+    // image: "https://play-lh.googleusercontent.com/PCQtKMEfkXGUUkMBGDmCrHfKFIv5YLhIrP1a3UMjjdGMEHIkMVFOYU_DH_6V2VXs1Q=w240-h480-rw",
+    image: 'https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9Oxg7MYPyS5CzJT78gaXR9AH2dGuihmnlFDxb',
     verifyUrl: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9riKBMVqhc0SLW26wuaJ5tD93HCGIoUn8ATb7",
     skills: [
       "AppCube (Huawei)",
