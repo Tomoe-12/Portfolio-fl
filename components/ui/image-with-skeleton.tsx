@@ -15,10 +15,12 @@ const ImageWithSkeleton = ({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className={cn("relative w-full h-full", containerClassName)}>
+    <div className={cn("relative w-full h-full overflow-hidden", containerClassName)}>
       {/* Shimmer skeleton */}
       {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-muted via-muted/60 to-muted rounded-[inherit]" />
+        <div className="absolute inset-0 rounded-[inherit] bg-muted overflow-hidden">
+          <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.4s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        </div>
       )}
       <Image
         {...props}
