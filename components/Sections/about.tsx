@@ -28,8 +28,8 @@ const About: React.FC<AboutProps> = ({ currentLanguage, visibleSections }) => {
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
             {currentLanguage === "en"
-              ? "I’m Khun Thi Han, a fourth-year Computer Science student, passionate Full-Stack Developer, and cybersecurity learner from Myanmar. I enjoy building modern web apps with React, Next.js, and MongoDB, while exploring the world of web security and ethical hacking."
-              : "ကျွန်တော်သည် မြန်မာနိုင်ငံက စတုတ္ထနှစ် ကွန်ပျူတာသိပ္ပံကျောင်းသား၊ Full-Stack Developer တစ်ယောက်ဖြစ်သလို ဆိုက်ဘာလုံခြုံရေးကို စိတ်ဝင်တစားလေ့လာနေသူ ခွန်သီဟန်ပါ။ React, Next.js, MongoDB တို့နဲ့ ခေတ်မီတဲ့ web app တွေ ရေးရတာကို ကြိုက်ပြီး web security နဲ့ ethical hacking ပိုင်းကိုလည်း လေ့လာဆန်းစစ်နေပါတယ်။"}
+              ? "I’m Khun Thi Han, a final-year Computer Science student, passionate Full-Stack Developer, and cybersecurity learner from Myanmar. I enjoy building modern web apps with React, Next.js, and MongoDB, while exploring the world of web security and ethical hacking."
+              : "ကျွန်တော်သည် မြန်မာနိုင်ငံက နောက်ဆုံးနှစ် ကွန်ပျူတာသိပ္ပံကျောင်းသား၊ Full-Stack Developer တစ်ယောက်ဖြစ်သလို ဆိုက်ဘာလုံခြုံရေးကို စိတ်ဝင်တစားလေ့လာနေသူ ခွန်သီဟန်ပါ။ React, Next.js, MongoDB တို့နဲ့ ခေတ်မီတဲ့ web app တွေ ရေးရတာကို ကြိုက်ပြီး web security နဲ့ ethical hacking ပိုင်းကိုလည်း လေ့လာဆန်းစစ်နေပါတယ်။"}
           </p>
         </div>
 

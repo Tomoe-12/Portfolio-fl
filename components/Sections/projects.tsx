@@ -1,9 +1,10 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
-import { ExternalLink, Github } from 'lucide-react'
+import { ArrowRight, ExternalLink, Github } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import projects from '@/data/projects'
 
@@ -16,6 +17,8 @@ const Projects: React.FC<ProjectsProps> = ({
     visibleSections,
     currentLanguage,
 }) => {
+  const featuredProjects = projects.slice(0, 3);
+
   return (
      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
@@ -39,7 +42,7 @@ const Projects: React.FC<ProjectsProps> = ({
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {projects.map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <Card
                 key={index}
                 className={`overflow-hidden hover-lift transition-all duration-1000 group ${
@@ -116,8 +119,8 @@ const Projects: React.FC<ProjectsProps> = ({
             ))}
           </div>
 
-          {/* See More Projects Button */}
-          {/* <div
+          {/* See All Projects Button */}
+          <div
             className={`text-center mt-16 transition-all duration-1000 delay-500 ${
               visibleSections.has("projects")
                 ? "animate-fade-in-up"
@@ -126,20 +129,23 @@ const Projects: React.FC<ProjectsProps> = ({
           >
             <p className="text-muted-foreground mb-6 text-lg">
               {currentLanguage === "en"
-                ? "Want to see more of my work? Check out my complete portfolio."
-                : "ကျွန်တော့်အလုပ်များကို ပိုမိုကြည့်ရှုလိုပါသလား? ကျွန်တော့်ရဲ့ အပြည့်အစုံ portfolio ကို ကြည့်ရှုပါ။"}
+                ? "Want to see more of my work?"
+                : "ကျွန်တော့်အလုပ်များကို ပိုမိုကြည့်ရှုလိုပါသလား?"}
             </p>
             <Button
               variant="outline"
               size="lg"
               className="hover-lift rounded-full"
+              asChild
             >
-              <ExternalLink className="mr-3 h-5 w-5" />
-              {currentLanguage === "en"
-                ? "See More Projects"
-                : "ပရောဂျက်များ ပိုမိုကြည့်ရန်"}
+              <Link href="/projects">
+                <ArrowRight className="mr-2 h-5 w-5" />
+                {currentLanguage === "en"
+                  ? "See All Projects"
+                  : "ပရောဂျက်အားလုံးကြည့်ရန်"}
+              </Link>
             </Button>
-          </div> */}
+          </div>
         </div>
       </section>
   )
