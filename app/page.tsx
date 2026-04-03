@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";import Nav from "@/components/nav";
+import { useState, useEffect, useRef } from "react";
+import Nav from "@/components/nav";
 import Hero from "@/components/Sections/hero";
 import About from "@/components/Sections/about";
 import Projects from "@/components/Sections/projects";
