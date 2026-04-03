@@ -4,7 +4,6 @@ import { Button } from "./ui/button";
 import { Menu, Moon, Sun, X } from "lucide-react";
 
 type NavProps = {
-  mounted: boolean;
   activeSection: string;
   setCurrentLanguage: (lang: string) => void;
   currentLanguage: string;
@@ -17,7 +16,6 @@ type NavProps = {
 };
 
 const Nav = ({
-  mounted,
   activeSection,
   setCurrentLanguage,
   currentLanguage,
@@ -46,14 +44,12 @@ const Nav = ({
 
   // On activeSection change → move indicator
   useEffect(() => {
-    if (mounted && !navLock.current) {
+    if (!navLock.current) {
       requestAnimationFrame(() => moveIndicatorTo(activeSection));
     }
-  }, [activeSection, mounted]);
+  }, [activeSection]);
 
   const scrollToSection = (sectionId: string) => {
-    if (!mounted) return;
-
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
