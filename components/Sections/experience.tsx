@@ -133,6 +133,7 @@ const Experience: React.FC<ExperienceProps> = ({
                             src={images[currentImageIdx] || "/placeholder.svg"}
                             alt={exp.title}
                             fill
+                            loading="lazy"
                             className="object-cover transition-all duration-700 group-hover:scale-[1.03]"
                           />
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/60 hidden md:block" />

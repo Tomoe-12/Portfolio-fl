@@ -34,6 +34,7 @@ const Hero = ({ currentLanguage, typedText = " " }: HeroProps) => {
                     alt="Profile"
                     width={200}
                     height={200}
+                    priority
                     className="object-cover w-full h-full"
                   />
                 </div>

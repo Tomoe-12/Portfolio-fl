@@ -59,6 +59,7 @@ const Certificates = ({
                         alt={`${cert.issuer} logo`}
                         width={100}
                         height={100}
+                        loading="lazy"
                         className="rounded-xl border-2 border-primary/20 hover-scale transition-transform duration-300"
                       />
                       <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-primary/20 to-secondary/20 animate-pulse-slow -z-10"></div>
