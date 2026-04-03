@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
+import ImageWithSkeleton from "../ui/image-with-skeleton";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
@@ -129,7 +129,7 @@ const Experience: React.FC<ExperienceProps> = ({
                     <div className="md:col-span-2 relative overflow-hidden bg-muted min-h-56 md:min-h-full">
                       {images.length > 0 && (
                         <>
-                          <Image
+                          <ImageWithSkeleton
                             src={images[currentImageIdx] || "/placeholder.svg"}
                             alt={exp.title}
                             fill

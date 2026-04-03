@@ -1,5 +1,5 @@
 'use client'
-import Image from 'next/image'
+import ImageWithSkeleton from '../ui/image-with-skeleton'
 import Link from 'next/link'
 import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
@@ -53,7 +53,7 @@ const Projects: React.FC<ProjectsProps> = ({
                 style={{ animationDelay: `${0.2 + index * 0.2}s` }}
               >
                 <div className="aspect-video relative overflow-hidden">
-                  <Image
+                  <ImageWithSkeleton
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill

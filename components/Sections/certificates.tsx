@@ -2,7 +2,7 @@
 import React from 'react'
 import { Button } from '../ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
-import Image from 'next/image'
+import ImageWithSkeleton from '../ui/image-with-skeleton'
 import { ExternalLink } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import certificates from '@/data/certificates'
@@ -53,8 +53,8 @@ const Certificates = ({
               >
                 <CardHeader className="pb-4">
                   <div className="flex items-start gap-6">
-                    <div className="relative">
-                      <Image
+                    <div className="relative w-[100px] h-[100px] flex-shrink-0">
+                      <ImageWithSkeleton
                         src={cert.image || "/placeholder.svg"}
                         alt={`${cert.issuer} logo`}
                         width={100}
