@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { ChevronDown, Download, Mail } from "lucide-react";
-import ImageWithSkeleton from "../ui/image-with-skeleton";
+import Image from "next/image";
 import { Profile_image } from "@/data/personal";
 interface HeroProps {
   currentLanguage: string;
@@ -25,7 +25,7 @@ const Hero = ({ currentLanguage, typedText = " " }: HeroProps) => {
             <div className="mb-8 animate-scale-in">
               <div className="relative inline-block">
                 <div className="w-52 h-52 rounded-full overflow-hidden mx-auto border-4 border-primary/20 hover-scale animate-float">
-                  <ImageWithSkeleton
+                  <Image
                     src={
                       Profile_image
                         ? Profile_image
@@ -34,7 +34,6 @@ const Hero = ({ currentLanguage, typedText = " " }: HeroProps) => {
                     alt="Profile"
                     width={200}
                     height={200}
-                    priority
                     className="object-cover w-full h-full"
                   />
                 </div>

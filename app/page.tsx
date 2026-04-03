@@ -17,24 +17,34 @@ export default function Portfolio() {
   const [typedText, setTypedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(["home", "about", "projects", "experience", "certificates", "contact"])
+    new Set()
   );
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState("en");
   const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
+  const [mounted, setMounted] = useState(false);
+
   const fullText = currentLanguage === "en" ? English_name : Burmese_name;
   const observerRef = useRef<IntersectionObserver | null>(null);
 
+  // Handle hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Scroll tracking
   useEffect(() => {
+    if (!mounted) return;
+
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [mounted]);
 
   // Active section tracking
   useEffect(() => {
+    if (!mounted) return;
     const handleScroll = () => {
       const sections = ["home", "about", "projects", "experience", "certificates", "contact"];
       const scrollPosition = window.scrollY + 100;
@@ -67,19 +77,23 @@ export default function Portfolio() {
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // Call once to set initial state
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [mounted]);
 
   // Dark mode toggle
   useEffect(() => {
+    if (!mounted) return;
+
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, mounted]);
 
   // Typing animation effect
   useEffect(() => {
+    if (!mounted) return;
+
     let timeout: NodeJS.Timeout;
     if (isTyping && typedText.length < fullText.length) {
       timeout = setTimeout(() => {
@@ -89,15 +103,18 @@ export default function Portfolio() {
       setIsTyping(false);
     }
     return () => clearTimeout(timeout);
-  }, [typedText, isTyping]);
+  }, [typedText, isTyping, mounted]);
 
   useEffect(() => {
+    if (!mounted) return;
     setTypedText("");
     setIsTyping(true);
-  }, [currentLanguage]);
+  }, [currentLanguage, mounted]);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
+    if (!mounted) return;
+
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -117,7 +134,16 @@ export default function Portfolio() {
     return () => {
       observerRef.current?.disconnect();
     };
-  }, []);
+  }, [mounted]);
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-pulse">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background transition-colors duration-500">
@@ -360,6 +386,7 @@ export default function Portfolio() {
 
       {/* Floating Navigation */}
       <Nav
+        mounted={mounted}
         activeSection={activeSection}
         setCurrentLanguage={setCurrentLanguage}
         currentLanguage={currentLanguage}

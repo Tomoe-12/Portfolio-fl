@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import ImageWithSkeleton from "../ui/image-with-skeleton";
+import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
@@ -129,11 +129,10 @@ const Experience: React.FC<ExperienceProps> = ({
                     <div className="md:col-span-2 relative overflow-hidden bg-muted min-h-56 md:min-h-full">
                       {images.length > 0 && (
                         <>
-                          <ImageWithSkeleton
+                          <Image
                             src={images[currentImageIdx] || "/placeholder.svg"}
                             alt={exp.title}
                             fill
-                            loading="lazy"
                             className="object-cover transition-all duration-700 group-hover:scale-[1.03]"
                           />
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/60 hidden md:block" />
