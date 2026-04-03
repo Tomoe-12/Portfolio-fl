@@ -49,6 +49,23 @@ const certificates = [
       "Project Delivery",
     ],
   },
+  {
+    title: "KBZPay Mini Apps Developers Bootcamp with Hackathon",
+    issuer: "KBZPay",
+    date: "2025-07-10",
+    credentialId: "KBZPAY-MINIAPP-HACKATHON-2025",
+    image: "https://play-lh.googleusercontent.com/PCQtKMEfkXGUUkMBGDmCrHfKFIv5YLhIrP1a3UMjjdGMEHIkMVFOYU_DH_6V2VXs1Q=w240-h480-rw",
+    verifyUrl: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9riKBMVqhc0SLW26wuaJ5tD93HCGIoUn8ATb7",
+    skills: [
+      "AppCube (Huawei)",
+      "Mini App Development",
+      "Low-Code Platform",
+      "UI Builder",
+      "Workflow Designer",
+      "KBZPay API Integration",
+      "Mobile App Development",
+    ],
+  },
 ];
 
 export default certificates;
