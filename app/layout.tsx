@@ -29,11 +29,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href={Profile_image} type='image/x-icon' />
-      </head>
-      <body className="bg-background text-foreground antialiased">{children}</body>
+    <html lang="en">
+    <head>
+      <link rel="icon" href={Profile_image} type='image/x-icon' />
+    </head>
+      <body>{children}</body>
     </html>
   )
 }
