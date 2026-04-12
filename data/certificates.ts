@@ -21,7 +21,7 @@ const certificates = [
     title: "ASEAN Cyber Shield Education Basic Course",
     issuer: "ACS Online Education",
     date: "2025-05-15",
-    credentialId: "ACS-2025-3rdGen",
+    credentialId: "ACS-2025-3rdGen-basic",
     image: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9UxSH93LgxwiAKdGW876XSlaNZ52pRJhfQYCB",
     verifyUrl: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9zvT3xSy2DlUJ8uY4gZfp7rvdFIMECqK0km1b",
     skills: [
@@ -39,7 +39,7 @@ const certificates = [
     title: "ASEAN Cyber Shield Education Advanced Course",
     issuer: "ACS Online Education",
     date: "2025-11-21",
-    credentialId: "ACS-2025-3rdGen",
+    credentialId: "ACS-2025-3rdGen-advanced",
     image: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9UxSH93LgxwiAKdGW876XSlaNZ52pRJhfQYCB",
     verifyUrl: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9BMxZkxp1LiquOMfSkZUaVAgz6yp70Gm5cvxK",
     skills: [
