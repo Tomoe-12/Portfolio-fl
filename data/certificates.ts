@@ -35,6 +35,20 @@ const certificates = [
       "Cryptography",
       "Consulting",
     ],
+  }, {
+    title: "ASEAN Cyber Shield Education Advanced Course",
+    issuer: "ACS Online Education",
+    date: "2025-11-21",
+    credentialId: "ACS-2025-3rdGen",
+    image: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9UxSH93LgxwiAKdGW876XSlaNZ52pRJhfQYCB",
+    verifyUrl: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9BMxZkxp1LiquOMfSkZUaVAgz6yp70Gm5cvxK",
+    skills: [
+      "Real-world Web Exploitatiion",
+      "Real-world System Exploitation",
+      "Digital Forensic",
+      "Malware Dev/Analysis",
+      "Incident Response"
+    ],
   },
   {
     title: "IT Project Management (Intensive)",
