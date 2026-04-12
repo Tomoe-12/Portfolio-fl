@@ -2,7 +2,7 @@ const certificates = [
   {
     title: "KBZPay Mini Apps Developers Bootcamp with Hackathon",
     issuer: "KBZPay",
-    date: "2025-07-10",
+    date: "2026-04-01",
     credentialId: "KBZPAY-MINIAPP-HACKATHON-2025",
     // image: "https://play-lh.googleusercontent.com/PCQtKMEfkXGUUkMBGDmCrHfKFIv5YLhIrP1a3UMjjdGMEHIkMVFOYU_DH_6V2VXs1Q=w240-h480-rw",
     image: 'https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9Oxg7MYPyS5CzJT78gaXR9AH2dGuihmnlFDxb',
