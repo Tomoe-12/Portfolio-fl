@@ -1,12 +1,13 @@
 'use client'
 import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
-import { ArrowRight, ExternalLink, Github } from 'lucide-react'
+import { ChevronDown, ChevronUp, ExternalLink, Github } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import projects from '@/data/projects'
+
+const INITIAL_VISIBLE = 3
 
 type ProjectsProps = {
   visibleSections: Set<string>;
@@ -17,7 +18,10 @@ const Projects: React.FC<ProjectsProps> = ({
     visibleSections,
     currentLanguage,
 }) => {
-  const featuredProjects = projects.slice(0, 3);
+  const [showAll, setShowAll] = useState(false)
+
+  const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_VISIBLE)
+  const hasMore = projects.length > INITIAL_VISIBLE
 
   return (
      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative">
@@ -42,7 +46,7 @@ const Projects: React.FC<ProjectsProps> = ({
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {featuredProjects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <Card
                 key={index}
                 className={`overflow-hidden hover-lift transition-all duration-1000 group ${
@@ -119,33 +123,36 @@ const Projects: React.FC<ProjectsProps> = ({
             ))}
           </div>
 
-          {/* See All Projects Button */}
-          <div
-            className={`text-center mt-16 transition-all duration-1000 delay-500 ${
-              visibleSections.has("projects")
-                ? "animate-fade-in-up"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
-            <p className="text-muted-foreground mb-6 text-lg">
-              {currentLanguage === "en"
-                ? "Want to see more of my work?"
-                : "ကျွန်တော့်အလုပ်များကို ပိုမိုကြည့်ရှုလိုပါသလား?"}
-            </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="hover-lift rounded-full"
-              asChild
+          {hasMore && (
+            <div
+              className={`text-center mt-16 transition-all duration-1000 delay-500 ${
+                visibleSections.has("projects")
+                  ? "animate-fade-in-up"
+                  : "opacity-0 translate-y-4"
+              }`}
             >
-              <Link href="/projects">
-                <ArrowRight className="mr-2 h-5 w-5" />
-                {currentLanguage === "en"
-                  ? "See All Projects"
-                  : "ပရောဂျက်အားလုံးကြည့်ရန်"}
-              </Link>
-            </Button>
-          </div>
+              <Button
+                variant="outline"
+                size="lg"
+                className="hover-lift rounded-full gap-2"
+                onClick={() => setShowAll((prev) => !prev)}
+              >
+                {showAll ? (
+                  <>
+                    {currentLanguage === "en" ? "Show Less" : "လျှော့ပြရန်"}
+                    <ChevronUp className="h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    {currentLanguage === "en"
+                      ? `See More Projects (${projects.length - INITIAL_VISIBLE} more)`
+                      : `ပရောဂျက်များထပ်ကြည့်ရန် (${projects.length - INITIAL_VISIBLE} ခု)`}
+                    <ChevronDown className="h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
         </div>
       </section>
   )
