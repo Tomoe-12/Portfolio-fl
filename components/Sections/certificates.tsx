@@ -1,11 +1,13 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import Image from 'next/image'
-import { ExternalLink } from 'lucide-react'
+import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import certificates from '@/data/certificates'
+
+const INITIAL_VISIBLE = 2
 
 
 interface CertificatesProps {
@@ -17,6 +19,11 @@ const Certificates = ({
     visibleSections,
     currentLanguage,
 }: CertificatesProps) => {
+  const [showAll, setShowAll] = useState(false)
+
+  const visibleCerts = showAll ? certificates : certificates.slice(0, INITIAL_VISIBLE)
+  const hasMore = certificates.length > INITIAL_VISIBLE
+
   return (
      <section
         id="certificates"
@@ -41,7 +48,7 @@ const Certificates = ({
           </div>
 
           <div className="grid md:grid-cols-2 gap-10">
-            {certificates.map((cert, index) => (
+            {visibleCerts.map((cert, index) => (
               <Card
                 key={index}
                 className={`overflow-hidden hover-lift transition-all duration-1000 group ${
@@ -114,29 +121,36 @@ const Certificates = ({
             ))}
           </div>
 
-          {/* Additional Certifications Note */}
-          {/* <div
-            className={`text-center mt-16 transition-all duration-1000 delay-500 ${
-              visibleSections.has("certificates")
-                ? "animate-fade-in-up"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
-            <p className="text-muted-foreground mb-6 text-lg">
-              {currentLanguage === "en"
-                ? "Continuously expanding my knowledge through professional development"
-                : "ပရော်ဖက်ရှင်နယ် ဖွံ့ဖြိုးတိုးတက်မှုများမှတစ်ဆင့် ကျွန်တော့်အသိပညာကို စဉ်ဆက်မပြတ် တိုးချဲ့နေပါသည်"}
-            </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="hover-lift rounded-full"
+          {hasMore && (
+            <div
+              className={`text-center mt-12 transition-all duration-1000 delay-500 ${
+                visibleSections.has("certificates")
+                  ? "animate-fade-in-up"
+                  : "opacity-0 translate-y-4"
+              }`}
             >
-              {currentLanguage === "en"
-                ? "View All Certifications"
-                : "လက်မှတ်အားလုံးကြည့်ရန်"}
-            </Button>
-          </div> */}
+              <Button
+                variant="outline"
+                size="lg"
+                className="hover-lift rounded-full gap-2"
+                onClick={() => setShowAll((prev) => !prev)}
+              >
+                {showAll ? (
+                  <>
+                    {currentLanguage === "en" ? "Show Less" : "လျှော့ပြရန်"}
+                    <ChevronUp className="h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    {currentLanguage === "en"
+                      ? `See More Certifications (${certificates.length - INITIAL_VISIBLE} more)`
+                      : `လက်မှတ်များထပ်ကြည့်ရန် (${certificates.length - INITIAL_VISIBLE} ခု)`}
+                    <ChevronDown className="h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
         </div>
       </section>
   )
