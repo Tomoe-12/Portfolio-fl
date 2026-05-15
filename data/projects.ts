@@ -3,7 +3,7 @@ const projects = [
     title: "Ithi",
     description:
       "A simple e-commerce web application where users can browse products, add them to a cart, and securely checkout with integrated payment functionality.",
-    tech: ["Next.js", "Tailwind CSS","Drizzle ORM", "PostgreSQL"],
+    tech: ["Next.js", "Tailwind CSS", "Drizzle ORM", "PostgreSQL"],
     github: "https://github.com/Tomoe-12/snap-shop",
     demo: "https://ithi.vercel.app/",
     image: "https://eib21y5pae.ufs.sh/f/2vuqpytl1cW9UoU5vPLgxwiAKdGW876XSlaNZ52pRJhfQYCB",
